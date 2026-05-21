@@ -1,19 +1,69 @@
-# (1) Phân tích và thiết kế giải pháp 
-# Toàn bộ dữ liệu đầu vào là string
-# Output:
-#   Bệnh nhân: [Họ tên] - Mã BA: [Mã bệnh án] - Chuyển tới: [Khoa/Phòng khám]
+# (1) Phân tích và thiết kế giải pháp
+# Phân tích Input/Output
+# Input
 
-# Thiết kế thuật toán: Viết mã giả (Pseudocode) hoặc mô tả các bước thực hiện tuần tự.
-#  Nhập thông tin bệnh nhân từ bàn phím
-#  In ra tiêu đề "PHIẾU KHÁM BỆNH ĐIỆN TỬ"
-#  In ra chuỗi định dạng: "Bệnh nhân: ho_ten - Mã BA: ma_benh_an - Chuyển tới: khoa_chi_dinh"
+# Người dùng nhập:
 
-print (" --- HỆ THỐNG NHẬP CHI SỐ SINH TON --- ")
-name_patient =input("Nhập họ và tên bệnh nhân:")
-patient_code = input("Nhập mã bệnh nhân:")
-department = input("Khoa chỉ định:")
+# Số lượng phòng học → int
+# Số hàng ghế của từng phòng → int
+# Số ghế trên mỗi hàng → int
+# Output
+# In sơ đồ phòng học bằng dấu *
+# Hoặc thông báo lỗi nếu dữ liệu không hợp lệ
 
-print (" --- PHIẾU KHÁM BỆNH ĐIỆN TỬ --- ")
-print ("Bệnh nhân : ", name_patient," - Mã BA:",patient_code," - Chuyển tới: ",department)
+# Đề xuất giải pháp
+
+# Chương trình sử dụng:
+
+# Vòng lặp ngoài để duyệt từng phòng học
+# Vòng lặp giữa để duyệt từng hàng ghế
+# Vòng lặp trong để in dấu *
+
+# Pseudocode
+# Nhập room_count
+
+# Nếu room_count <= 0
+#     In "Số lượng phòng học không hợp lệ"
+#     Kết thúc chương trình
+
+# Lặp từng phòng học
+
+#     Nhập rows
+#     Nhập seats
+
+#     Nếu rows <= 0 hoặc seats <= 0
+#         In "Dữ liệu phòng học không hợp lệ. Bỏ qua phòng này"
+#         Bỏ qua phòng hiện tại
+
+#     Nếu rows > 10 hoặc seats > 10
+#         In "Phòng quá lớn. Dừng nhập dữ liệu"
+#         Kết thúc chương trình
+
+#     In tên phòng học
+
+#     Lặp theo từng hàng
+#         Lặp theo từng ghế
+#             In *
+#         Xuống dòng
 
 
+
+room_count = int(input("Nhập số lượng phòng học: "))
+if room_count <= 0:
+    print("Số lượng phòng học không hợp lệ")
+else:
+    for room in range(1, room_count + 1):
+        print(f"\n--- Phòng học {room} ---")
+        rows = int(input("Nhập số hàng ghế: "))
+        seats = int(input("Nhập số ghế mỗi hàng: "))
+        if rows <= 0 or seats <= 0:
+            print("Dữ liệu phòng học không hợp lệ. Bỏ qua phòng này")
+            continue
+        if rows > 10 or seats > 10:
+            print("Phòng quá lớn. Dừng nhập dữ liệu")
+            break
+        print("Sơ đồ chỗ ngồi:")
+        for row in range(rows):
+            for seat in range(seats):
+                print("*", end="")
+            print()
